@@ -131,4 +131,16 @@ Contributor Name: Role or Contribution Description​
 (Add all contributors and their roles.)
 
 Contact Information
-For any questions or feedback, feel free to reach out to CapuchaRojo.
+For any questions or feedback, feel free to reach out to CapuchaRojo. 
+
+
+
+
+# QATP Ængine
+
+## Overview
+QATP Ængine is a groundbreaking approach to AI energy processing, inspired by biological ATP cycles and quantum condensation mechanisms. This repository contains the foundational research and prototype implementations for a self-sustaining AI energy system.
+
+## Installation
+```sh
+pip install -r requirements.txt

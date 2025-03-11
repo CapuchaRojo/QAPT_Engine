@@ -1,0 +1,7 @@
+numpy
+scipy
+sympy
+matplotlib
+pandas
+qutip  # Quantum toolbox for Python
+lightgbm  # Potential light-based AI model integration
