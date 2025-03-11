@@ -1,0 +1,24 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.log
+*.lock
+*.tmp
+*.bak
+*.swp
+*.swo
+*.swn
+*.pyc
+*.pyo
+*.class
+*.jar
+*.iml
+*.ipr
+*.iws
+*.idea/
+.vscode/
+node_modules/
+venv/
+.env
+__pycache__/
+.git/
