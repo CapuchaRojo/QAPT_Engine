@@ -1,3 +1,8 @@
+## Quantum AI Energy Transfer Processor (QATP-X)
+QATP-X is a groundbreaking AI processor designed to harness quantum energy transfer mechanisms to create a self-sustaining computational system. Drawing inspiration from mitochondrial ATP cycles and quantum principles such as Bose–Einstein condensation, quantum tunneling, and polaritonic interactions, this processor aims to revolutionize AI efficiency.
+
+➡️ **[Read the Full Theoretical Foundation](docs/QATP-X_Theory.md)**
+
 QATP-X
 The Quantum AI Energy Transfer Processor (QATP-X) is an innovative project aimed at developing a self-sustaining AI computation system. Inspired by biological mitochondria, QATP-X leverages quantum condensation principles and light-based energy transfer to eliminate the dependency on traditional electrical power, creating a continuous, low-energy computational loop.​
 
