@@ -61,9 +61,9 @@ The QATP Engine represents a paradigm shift in AI energy utilization, bringing t
 
 References & Research Notes
 
-Quantum condensation in AI: [Research Paper Link]
+Quantum condensation in AI: [https://en.wikipedia.org/wiki/Bose%E2%80%93Einstein_condensation_of_quasiparticles]
 
-Polaritons in computation: [Reference Study]
+Polaritons in computation: [https://en.wikipedia.org/wiki/Spin_Optics_Laboratory]
 
-ATP energy transfer models in AI: [Study on bio-inspired computation]
+ATP energy transfer models in AI: [https://en.wikipedia.org/wiki/John_Hopfield]
 
