@@ -3,8 +3,8 @@ scipy
 sympy
 matplotlib
 pandas
-qutip
-lightgbm
+qutip  # Quantum toolbox for Python
+lightgbm  # Potential light-based AI model integration
 networkx
 joblib
 h5py
