@@ -1,146 +1,111 @@
-## Quantum AI Energy Transfer Processor (QATP-X)
-QATP-X is a groundbreaking AI processor designed to harness quantum energy transfer mechanisms to create a self-sustaining computational system. Drawing inspiration from mitochondrial ATP cycles and quantum principles such as Bose–Einstein condensation, quantum tunneling, and polaritonic interactions, this processor aims to revolutionize AI efficiency.
+# **Quantum AI Energy Transfer Processor (QATP-X)**
+
+## **Overview**
+**QATP-X** is a groundbreaking AI processor designed to harness **quantum energy transfer** to create a self-sustaining computational system. Drawing inspiration from **mitochondrial ATP cycles**, **Bose–Einstein condensation**, **quantum tunneling**, and **polaritonic interactions**, this processor seeks to revolutionize AI efficiency and energy sustainability.
+
+> **Mission:** Develop a **quantum-assisted AI processing engine** that maximizes computational efficiency through **energy transfer optimization**, reducing reliance on conventional power sources.
+
+## **Theoretical Foundation**
+**QATP-X** operates at the intersection of:
+- **Quantum Condensation**: Efficient energy transfer inspired by Bose-Einstein condensates.
+- **Exciton Transport Chains**: Modeled after photosynthetic and mitochondrial energy systems.
+- **Quantum Batteries**: Storing and transferring quantum energy with near-lossless efficiency.
+- **Neural Quantum Processing Units (NQPUs)**: AI computations utilizing quantum tunneling and coherence.
 
 ➡️ **[Read the Full Theoretical Foundation](docs/QATP-X_Theory.md)**
 
-QATP-X
-The Quantum AI Energy Transfer Processor (QATP-X) is an innovative project aimed at developing a self-sustaining AI computation system. Inspired by biological mitochondria, QATP-X leverages quantum condensation principles and light-based energy transfer to eliminate the dependency on traditional electrical power, creating a continuous, low-energy computational loop.​
+## **Table of Contents**
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [File Structure](#file-structure)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
+- [Credits](#credits)
+- [Contact Information](#contact-information)
 
-Table of Contents
-Installation
-Usage
-Configuration
-File Structure
-Examples
-Contributing
-License
-Credits
-Contact Information
-Installation
-Ensure you have Python 3.6 or higher installed.
+## **Installation**
 
-You can download the latest version of Python from the official website.​
-Clone this repository:
+### **Prerequisites**
+- Python **3.8+**
+- Dependencies: `numpy`, `qutip`
 
-bash
-Copy
-Edit
-git clone https://github.com/CapuchaRojo/QATP-X.git
-Navigate to the project directory:
-bash
-Copy
-Edit
-cd QATP-X
-Create a virtual environment:
-bash
-Copy
-Edit
-python -m venv venv
-Activate the virtual environment:
+### **Step-by-Step Setup**
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/CapuchaRojo/QATP-X.git
+   cd QATP-X
+   ```
+2. **Create a virtual environment:**
+   ```sh
+   python -m venv venv
+   ```
+3. **Activate the virtual environment:**
+   - **Windows:** `venv\Scripts\activate`
+   - **Mac/Linux:** `source venv/bin/activate`
+4. **Install dependencies:**
+   ```sh
+   pip install -r requirements.txt
+   ```
 
-On Windows:
-bash
-Copy
-Edit
-venv\Scripts\activate
-On macOS/Linux:
-bash
-Copy
-Edit
-source venv/bin/activate
-Install the dependencies:
+## **Usage**
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-Usage
-Run the project:
-bash
-Copy
-Edit
-python main.py
-Follow the on-screen instructions to perform various tasks.
-
-Modify the config.py file to customize settings as needed.
-
-Configuration
-The project can be configured by modifying the config.py file. The following settings are available:​
-
-SETTING_1: Description of setting 1.​
-SETTING_2: Description of setting 2.​
-(Provide specific configuration options relevant to your project.)
-
-File Structure
-The project follows the structure below:​
-
-arduino
-Copy
-Edit
-
-QATP-X/
-├── main.py
-├── config.py
-├── utils/
-│   ├── module1.py
-│   ├── module2.py
-│   └── ...
-├── tests/
-│   ├── test_module1.py
-│   ├── test_module2.py
-│   └── ...
-└── README.md
-(Adjust the file structure to match your project's actual layout.)
-
-Examples
-Here are some examples of how to use the project:
-
-Example 1:
-
-python
-Copy
-Edit
-from utils.module1 import function1
-
-result = function1(arg1, arg2)
-print(result)
-Example 2:
-
-python
-Copy
-Edit
-from utils.module2 import MyClass
-
-instance = MyClass()
-instance.do_something()
-(Provide specific examples that demonstrate how to use your project's functionality.)
-
-Contributing
-Contributions are welcome! If you find a bug or have a feature request, please open an issue or submit a pull request. For major changes, please discuss them with the project maintainers first.​
-
-License
-This project is licensed under the MIT License – see the LICENSE file for details.​
-
-Credits
-CapuchaRojo: Project Lead and Developer​
-github.com
-+1
-stqadiscussions.blogspot.com
-+1
-Contributor Name: Role or Contribution Description​
-(Add all contributors and their roles.)
-
-Contact Information
-For any questions or feedback, feel free to reach out to CapuchaRojo. 
-
-
-
-
-# QATP Ængine
-
-## Overview
-QATP Ængine is a groundbreaking approach to AI energy processing, inspired by biological ATP cycles and quantum condensation mechanisms. This repository contains the foundational research and prototype implementations for a self-sustaining AI energy system.
-
-## Installation
+### **Run the System**
+To execute QATP-X:
 ```sh
-pip install -r requirements.txt
+python qatp_engine.py
+```
+
+### **Expected Output**
+The system runs a quantum-assisted energy cycle:
+```sh
+QATP-X activation result with input 3.0: True
+System Monitor: {"Battery Energy": 2.5, "Condensate Energy": 5.5, "Exciton Chain State": [...], "NQPU State": 1.0}
+```
+
+## **Configuration**
+Modify `config.py` to adjust:
+- **Quantum energy cycle parameters**
+- **Battery efficiency factors**
+- **Exciton transport length & coherence decay**
+
+## **File Structure**
+```
+QATP-X/
+├── qatp_engine.py      # Main QATP-X execution file
+├── qatp_engine_tests.py # Unit tests for QATP-X components
+├── config.py           # Configuration settings
+├── utils/              # Utility functions (optional)
+├── docs/               # Theoretical documentation
+└── README.md           # This document
+```
+
+## **Examples**
+
+### **Hybrid Quantum-Classical Processing**
+```python
+from qatp_engine import QATPSystem
+
+qatp = QATPSystem()
+classical_input = 2.5
+output = qatp.hybrid_process(classical_input)
+print(f"Hybrid processing output: {output}")
+```
+
+## **Contributing**
+Contributions are welcome! Please:
+1. **Open an Issue** for bug reports or feature requests.
+2. **Submit a Pull Request** with improvements.
+3. Follow coding standards and ensure tests pass before submitting.
+
+## **License**
+This project is licensed under the **MIT License** – see the `LICENSE` file for details.
+
+## **Credits**
+- **CapuchaRojo** – Project Lead & Developer
+- **Community Contributors** – Enhancements & Research
+
+## **Contact Information**
+For inquiries or collaborations, contact **CapuchaRojo** via GitHub.
+
