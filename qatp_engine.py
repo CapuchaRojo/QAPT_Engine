@@ -1,6 +1,5 @@
 """
-"""
-QATP-X: Quantum ATP Energy Framework - Bio-Inspired Quantum AI System
+QATP_X = "Quantum ATP Energy Framework - Bio-Inspired Quantum AI System"
 
 This script expands upon the original QATP Engine concept, incorporating advanced quantum energy mechanisms
 such as exciton transport chains, polaritonic condensates, and quantum batteries.
