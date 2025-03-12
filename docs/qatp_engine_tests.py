@@ -1,5 +1,4 @@
-import unittest
-from qatp_engine import (QATPSystem, QuantumExcitonTransportChain, PolaritonCondensate, QuantumBattery, NQPU)
+from qatp_engine import QATPEngine, QuantumExcitonTransportChain, PolaritonCondensate, QuantumBattery, NQPU
 
 class TestQATPSystem(unittest.TestCase):
     
