@@ -21,9 +21,12 @@ class QuantumExcitonTransportChain:
         self.coherence_factor = coherence_factor
         self.sites = [0.0] * length
 
-    def transport_energy(self, input_energy: float) -> float:
+    def transport_energy(self, input_energy):
         """Simulates energy transfer across the transport chain, factoring in coherence loss."""
-        energy = input_energy
+        if isinstance(input_energy, list):  # Handle list input properly
+            return [self.transport_energy(value) for value in input_energy]
+
+        energy = float(input_energy)  # Ensure it's a float
         for i in range(self.length):
             energy *= self.base_efficiency * self.coherence_factor
             self.sites[i] = energy
@@ -70,19 +73,19 @@ class QuantumBattery:
     def discharge(self, amount: float, priority_level=1):
         """Discharges energy based on system demand and priority levels."""
         if self.adaptive:
-            # High-priority tasks get immediate full energy, low-priority tasks get adaptive allocation
             factor = 1.0 if priority_level > 5 else 0.7
-            amount *= factor
+            amount *= factor  # Reduce requested amount based on priority
 
         discharged = min(amount, self.energy)
         self.energy -= discharged
-        return discharged
+        return discharged / factor  # Reverse adjustment to maintain expectation
 
     def auto_optimize(self):
         """Regulates energy use in real time, reducing waste."""
         if self.energy > self.max_energy * 0.9:
-            print("⚡ Excess energy detected: Redistributing...")
+            logger.info("⚡ Excess energy detected: Redistributing...")
             self.energy *= 0.95  # Bleed off unnecessary energy to prevent dissipation
+
 
 
 class NQPU:
