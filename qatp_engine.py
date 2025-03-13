@@ -87,28 +87,74 @@ class QuantumBattery:
             self.energy *= 0.95  # Bleed off unnecessary energy to prevent dissipation
 
 
-
 class NQPU:
-    """Neural Quantum Processing Unit (NQPU) - Simulates AI computations using quantum energy cycles."""
+    """Neural Quantum Processing Unit (NQPU) - Quantum Reinforcement Learning-Enhanced Processing."""
 
-    def __init__(self, threshold=1.0, coherence_decay=0.95):
+    def __init__(self, threshold=1.0, coherence_decay=0.95, base_learning_rate=0.02):
         self.threshold = threshold
         self.state = 0.0
         self.coherence_decay = coherence_decay
+        self.learning_rate = base_learning_rate
+        self.experience = {}  # Quantum memory for past activations
+        self.coherence_memory = {}  # Track coherence states
 
-    def process(self, input_energy: float):
-        """Processes energy for AI computation, factoring in quantum tunneling probabilities."""
-        if input_energy >= self.threshold:
+    def process(self, input_energy: float, priority_level=1):
+        """Processes energy adaptively, using QRL-based learning for optimal efficiency."""
+
+        # Adjust threshold based on task priority
+        adjusted_threshold = self.threshold * (1.0 - (0.05 * priority_level))  
+        energy_surplus = input_energy - adjusted_threshold
+
+        # Adaptive tunneling probability
+        if energy_surplus >= 0:
             self.state = input_energy * self.coherence_decay
+            self.learn(input_energy, success=True)
             return True
         else:
-            probability = math.exp(-(self.threshold - input_energy))
-            if random.random() < probability:
+            tunneling_probability = self.get_adaptive_tunneling_probability(input_energy)
+            if random.random() < tunneling_probability:
                 self.state = input_energy * self.coherence_decay
+                self.learn(input_energy, success=True)
                 return True
             else:
                 self.state = 0.0
+                self.learn(input_energy, success=False)
                 return False
+
+    def learn(self, input_energy, success):
+        """Quantum-inspired reinforcement learning algorithm."""
+
+        # Initialize energy state memory if not present
+        if input_energy not in self.experience:
+            self.experience[input_energy] = 0.5  # Default 50% activation probability
+
+        # Adjust learning rate dynamically based on past performance
+        if success:
+            reward = self.compute_reward(input_energy)
+            self.experience[input_energy] += self.learning_rate * reward
+        else:
+            self.experience[input_energy] -= self.learning_rate
+
+        # Keep probability within (0,1)
+        self.experience[input_energy] = max(0.01, min(0.99, self.experience[input_energy]))
+
+    def get_adaptive_tunneling_probability(self, input_energy):
+        """Returns a dynamically adjusted tunneling probability based on past activations."""
+        return self.experience.get(input_energy, 0.5)
+
+    def compute_reward(self, input_energy):
+        """Quantum-inspired reward function using a Boltzmann distribution for coherence tracking."""
+        if input_energy not in self.coherence_memory:
+            self.coherence_memory[input_energy] = 1.0  # Assume full coherence initially
+
+        # Compute reward as function of coherence level
+        coherence_factor = self.coherence_memory[input_energy]
+        reward = math.exp(-1 / (coherence_factor + 1e-6))  # Prevent division by zero
+
+        # Update coherence memory based on activation
+        self.coherence_memory[input_energy] = max(0.1, min(1.0, coherence_factor * 0.99))  
+
+        return reward
 
 
 # ========================

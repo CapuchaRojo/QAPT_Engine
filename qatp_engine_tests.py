@@ -85,11 +85,10 @@ class TestQATPEngine(unittest.TestCase):
         battery.auto_optimize()  # Trigger optimization
         self.assertAlmostEqual(battery.energy, 9.5, places=3)  # Should reduce to 95% capacity
 
-
     def test_nqpu_activation(self):
         """Test if NQPU activates based on input energy."""
         nqpu = NQPU(threshold=1.0)
-        
+    
         # Full activation (input >= threshold)
         self.assertTrue(nqpu.process(1.2))
 
@@ -100,6 +99,44 @@ class TestQATPEngine(unittest.TestCase):
         # Very low input should rarely activate
         low_energy_activations = sum(nqpu.process(0.1) for _ in range(100))
         self.assertLess(low_energy_activations, tunneling_activations)
+ 
+    def test_nqpu_qrl_processing(self):
+        """Test QRL-enhanced processing in NQPU."""
+        nqpu = NQPU(threshold=1.0)
+
+        # High-priority task should activate more easily
+        self.assertTrue(nqpu.process(0.8, priority_level=7))
+        self.assertTrue(nqpu.process(1.2, priority_level=3))
+
+        # Low-priority task should struggle but gradually improve
+        for _ in range(100):
+            nqpu.process(0.5, priority_level=1)  
+
+        # Reinforcement Learning Check - Ensure probability adjusts over time
+        initial_probability = nqpu.get_adaptive_tunneling_probability(0.5)
+        nqpu.process(0.5, priority_level=1)  # Let it learn from processing
+        updated_probability = nqpu.get_adaptive_tunneling_probability(0.5)
+        self.assertNotEqual(initial_probability, updated_probability)  # Learning must adjust probability 
+
+        learned_probability = nqpu.get_adaptive_tunneling_probability(0.5)
+        self.assertGreater(learned_probability, 0.5)  # Learning must increase probability
+
+        # Test coherence-based reward system
+        nqpu.compute_reward(0.8)
+        reward = nqpu.compute_reward(0.8)
+        self.assertLess(reward, 1.0)  # Reward should gradually decrease as coherence decays
+
+    def test_nqpu_adaptive_processing(self):
+        """Test adaptive processing & learning behavior in NQPU."""
+        nqpu = NQPU(threshold=1.0)
+
+        # High-priority task should activate more easily
+        self.assertTrue(nqpu.process(0.8, priority_level=7))  # Should activate
+        self.assertTrue(nqpu.process(1.2, priority_level=3))  # Should activate normally
+
+        # Low-priority task should struggle to activate at low energy
+        activations = sum(nqpu.process(0.5, priority_level=1) for _ in range(100))
+        self.assertGreater(activations, 0)  # Should activate sometimes
 
     def test_qatp_energy_cycle(self):
         """Test a full energy cycle in QATP system."""
