@@ -22,3 +22,19 @@ venv/
 .env
 __pycache__/
 .git/
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc
+
+# Ignore logs & caches
+logs/
+*.log
+.cache/
+
