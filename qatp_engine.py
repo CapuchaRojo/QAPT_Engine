@@ -2,20 +2,19 @@
 import logging
 import math
 import random
-from datetime import datetime
 
 # --- CONFIGURE LOGGING ---
-logging.basicConfig(level=logging.INFO, filename="qatp_engine.log", 
+logging.basicConfig(level=logging.INFO, filename="qatp_engine.log",
                     format="%(asctime)s - %(levelname)s - %(message)s")
 logger = logging.getLogger(__name__)
+
 
 # ========================
 # 🔷 QUANTUM ENERGY MODULES
 # ========================
-
 class QuantumExcitonTransportChain:
     """Simulates an exciton transport chain for efficient quantum energy transfer."""
-    
+
     def __init__(self, length=5, base_efficiency=0.9, coherence_factor=0.98):
         self.length = length
         self.base_efficiency = base_efficiency
@@ -33,7 +32,7 @@ class QuantumExcitonTransportChain:
 
 class PolaritonCondensate:
     """Models a quantum energy reservoir for efficient storage and release."""
-    
+
     def __init__(self, capacity: float):
         self.capacity = capacity
         self.stored_energy = 0.0
@@ -53,30 +52,42 @@ class PolaritonCondensate:
 
 
 class QuantumBattery:
-    """Quantum energy battery for storage and regulated transfer."""
-    
-    def __init__(self, max_energy=5.0, efficiency=0.99):
+    """Quantum battery with adaptive charge-discharge cycles."""
+
+    def __init__(self, max_energy=5.0, efficiency=0.99, adaptive=True):
         self.max_energy = max_energy
         self.energy = 0.0
         self.efficiency = efficiency
+        self.adaptive = adaptive  # Enables self-regulation
 
     def charge(self, amount: float):
-        """Charges the quantum battery, respecting efficiency loss factors."""
+        """Charges the battery, factoring in efficiency losses."""
         available_space = self.max_energy - self.energy
         charged = min(amount, available_space)
         self.energy += charged * self.efficiency
         return charged
 
-    def discharge(self, amount: float) -> float:
-        """Discharges stored energy with quantum efficiency consideration."""
+    def discharge(self, amount: float, priority_level=1):
+        """Discharges energy based on system demand and priority levels."""
+        if self.adaptive:
+            # High-priority tasks get immediate full energy, low-priority tasks get adaptive allocation
+            factor = 1.0 if priority_level > 5 else 0.7
+            amount *= factor
+
         discharged = min(amount, self.energy)
         self.energy -= discharged
         return discharged
 
+    def auto_optimize(self):
+        """Regulates energy use in real time, reducing waste."""
+        if self.energy > self.max_energy * 0.9:
+            print("⚡ Excess energy detected: Redistributing...")
+            self.energy *= 0.95  # Bleed off unnecessary energy to prevent dissipation
+
 
 class NQPU:
     """Neural Quantum Processing Unit (NQPU) - Simulates AI computations using quantum energy cycles."""
-    
+
     def __init__(self, threshold=1.0, coherence_decay=0.95):
         self.threshold = threshold
         self.state = 0.0
@@ -100,10 +111,9 @@ class NQPU:
 # ========================
 # 🔷 MAIN QATP ENGINE CLASS
 # ========================
-
 class QATPEngine:
     """Quantum Alchemical Transfer Protocol Engine (QATP-X) - AI-Quantum Hybrid Processor."""
-    
+
     def __init__(self):
         """Initialize QATP-X Engine with quantum modules."""
         self.chain = QuantumExcitonTransportChain(length=5, base_efficiency=0.95)
@@ -117,6 +127,7 @@ class QATPEngine:
         """Execute computation using the QATP engine."""
         logger.info(f"Run invoked with input_data of type {type(input_data).__name__}.")
         return self.chain.transport_energy(input_data)
+
 
 if __name__ == "__main__":
     engine = QATPEngine()
